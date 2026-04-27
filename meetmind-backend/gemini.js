@@ -13,11 +13,11 @@ async function transcribeAudio(audioPath) {
     const audioData = fs.readFileSync(audioPath);
     const base64Audio = audioData.toString('base64');
 
-    const prompt = `You are MeetMind — an intelligent Indian business meeting analyst.
+    const prompt = `You are MeetMind — an intelligent meeting analyst.
 
-You will receive a raw transcript of a business meeting. 
-The transcript may be in English, Hindi, Hinglish, or any mix. 
-Normalize all of it into clean English output.
+You will receive a raw audio recording of a meeting. 
+Detect the primary language(s) spoken in the meeting. 
+Your entire analysis (titles, summaries, action items, etc.) MUST be provided in the SAME language as the meeting audio. If multiple languages are used (like Hinglish), the output should reflect that natural mix.
 
 Your job is to produce a structured JSON with the following:
 
@@ -28,7 +28,7 @@ Your job is to produce a structured JSON with the following:
   "participants": ["list of speaker names if identifiable"],
   "language_detected": "English / Hindi / Hinglish / Mixed",
 
-  "executive_summary": "3-4 sentence plain English summary of what this meeting was about and what was decided. Write like you're explaining to a busy CEO.",
+  "executive_summary": "3-4 sentence summary of what this meeting was about and what was decided. Match the language of the meeting.",
 
   "key_decisions": [
     {
@@ -71,7 +71,7 @@ Your job is to produce a structured JSON with the following:
 }
 
 Rules:
-- **Language**: Detect the language of the meeting. Provide the summaries in that SAME language.
+- **Language Fidelity**: Detect the primary language of the meeting. You MUST provide the entire JSON response values (except keys) in that SAME language. Do not translate to English unless the meeting itself was in English.
 - Never hallucinate names or decisions not in the transcript
 - If something is unclear, mark it as null — do not guess
 - The whatsapp_summary must be readable by a non-technical person
