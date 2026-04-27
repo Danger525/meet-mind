@@ -1,0 +1,11 @@
+{
+  "name": "meetmind-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:backend": "cd meetmind-backend && npm install",
+    "start:backend": "cd meetmind-backend && npm start",
+    "dev:backend": "cd meetmind-backend && npm run dev",
+    "install-all": "npm run install:backend"
+  }
+}
