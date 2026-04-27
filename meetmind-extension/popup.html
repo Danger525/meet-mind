@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MeetMind</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <img src="icons/icon48.png" alt="MeetMind">
+    <h1>MeetMind</h1>
+  </div>
+
+  <div class="controls">
+    <button id="startBtn">
+      Start Recording
+    </button>
+    <button id="stopBtn" disabled>
+      Stop
+    </button>
+  </div>
+
+  <div class="status-container">
+      <div class="status-header">
+        <span>AI Summary</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="setup.html" target="_blank" style="color: #818cf8; text-decoration: none; font-size: 10px;">Setup Mic</a>
+          <div id="statusDot" class="status-dot"></div>
+        </div>
+      </div>
+    <div id="summary">
+      <div class="empty-state">Waiting for meeting audio...</div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
